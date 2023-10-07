@@ -18,6 +18,9 @@ const database = firebase.database();
 const switchState = document.getElementById('switchState');
 const passvalueButton = document.getElementById('passvalue');
 const skychangeButton = document.getElementById('skychange');
+const VRScene1 = document.getElementById('VRScene1');
+const VRScene2 = document.getElementById('VRScene2');
+const VRScene3 = document.getElementById('VRScene3');
 
 // Fetch the initial state from Firebase for switchState
 database.ref('switchState').on('value', (snapshot) => {
@@ -36,6 +39,25 @@ database.ref('skychange').on('value', (snapshot) => {
     const state = snapshot.val();
     updateButton(skychangeButton, state);
 });
+
+// Fetch the initial state from Firebase for VRSCene1
+database.ref('VRScene1').on('value', (snapshot) => {
+    const state = snapshot.val();
+    updateButton(VRScene1, state);
+});
+
+// Fetch the initial state from Firebase for VRSCene2
+database.ref('VRScene2').on('value', (snapshot) => {
+    const state = snapshot.val();
+    updateButton(VRScene2, state);
+});
+
+// Fetch the initial state from Firebase for VRSCene3
+database.ref('VRScene3').on('value', (snapshot) => {
+    const state = snapshot.val();
+    updateButton(VRScene3, state);
+});
+
 
 // Update button based on the state
 function updateButton(buttonElement, state) {
