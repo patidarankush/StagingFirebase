@@ -21,6 +21,7 @@ const skychangeButton = document.getElementById('skychange');
 const VRScene1 = document.getElementById('VRScene1');
 const VRScene2 = document.getElementById('VRScene2');
 const VRScene3 = document.getElementById('VRScene3');
+const StartScene = document.getElementById('StartScene');
 
 // Fetch the initial state from Firebase for switchState
 database.ref('switchState').on('value', (snapshot) => {
@@ -56,6 +57,12 @@ database.ref('VRScene2').on('value', (snapshot) => {
 database.ref('VRScene3').on('value', (snapshot) => {
     const state = snapshot.val();
     updateButton(VRScene3, state);
+});
+
+// Fetch the initial state from Firebase for Startscene
+database.ref('Startscene').on('value', (snapshot) => {
+    const state = snapshot.val();
+    updateButton(StartScene, state);
 });
 
 
