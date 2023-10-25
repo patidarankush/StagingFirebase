@@ -102,8 +102,9 @@ function toggleState(refName, newState) {
 // Function to update the Token Balance in Firebase
 function updateTokenBalance(inputElement) {
     const newTokenBalance = inputElement.value;
+    const newTokenBalancetwo = parseInt(inputElement.value, 10);
     const refName = 'Playerprofile/Tokenbalance';
 
     // Update the value in Firebase
-    database.ref(refName).set(newTokenBalance);
+    database.ref("Playerprofile").child("Tokenbalance").set(newTokenBalancetwo);
 }
