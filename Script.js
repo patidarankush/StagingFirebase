@@ -17,7 +17,7 @@ const database = firebase.database();
 
 const switchState = document.getElementById('switchState');
 const passvalueButton = document.getElementById('passvalue');
-const skychangeButton = document.getElementById('skychange');
+const podiumsremovedButton = document.getElementById('podiumsremoved');
 const VRScene1 = document.getElementById('VRScene1');
 const VRScene2 = document.getElementById('VRScene2');
 const VRScene3 = document.getElementById('VRScene3');
@@ -37,10 +37,10 @@ database.ref('passvalue').on('value', (snapshot) => {
     updateButton(passvalueButton, state);
 });
 
-// Fetch the initial state from Firebase for skychange
-database.ref('skychange').on('value', (snapshot) => {
+// Fetch the initial state from Firebase for podiumsremoved
+database.ref('podiumsremoved').on('value', (snapshot) => {
     const state = snapshot.val();
-    updateButton(skychangeButton, state);
+    updateButton(podiumsremovedButton, state);
 });
 
 // Fetch the initial state from Firebase for VRSCene1
@@ -95,15 +95,16 @@ function updateButtontwo(textelement, value, buttonElement) {
 // Toggle the state in Firebase
 function toggleState(refName, newState) {
     const buttonElement = document.getElementById(refName);
-    buttonElement.disabled = true;
+    buttonElement.disabled = true; 
     database.ref(refName).set(newState);
 }
 
 // Function to update the Token Balance in Firebase
 function updateTokenBalance(inputElement) {
     const newTokenBalance = inputElement.value;
+    const newTokenBalancetwo = parseInt(inputElement.value, 10);
     const refName = 'Playerprofile/Tokenbalance';
 
     // Update the value in Firebase
-    database.ref(refName).set(newTokenBalance);
+    database.ref("Playerprofile").child("Tokenbalance").set(newTokenBalancetwo);
 }
